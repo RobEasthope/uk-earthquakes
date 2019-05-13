@@ -1,5 +1,6 @@
 import React from 'react';
 import Map from './Map';
+import { xml2json } from 'xml-js';
 
 const App: React.FC = () => {
   const [rawData, setRawData] = React.useState(null);
@@ -7,11 +8,11 @@ const App: React.FC = () => {
   React.useEffect(() => {
     fetch('http://earthquakes.bgs.ac.uk/feeds/MhSeismology.xml')
       .then(response => response.text())
-      .then(str => new window.DOMParser().parseFromString(str, 'text/xml'))
+      .then(str => xml2json(str))
       .then(data => {
         // const { name } = data.results[0];
         console.log(data);
-        setRawData(data);
+        // setRawData(data);
       });
   }, []);
 
