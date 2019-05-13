@@ -8,7 +8,7 @@ const App: React.FC = () => {
 
   React.useEffect(() => {
     fetch(
-      'https://api.rss2json.com/v1/api.json?rss_url=http%3A%2F%2Fearthquakes.bgs.ac.uk%2Ffeeds%2FMhSeismology.xml'
+      `https://api.rss2json.com/v1/api.json?rss_url=http%3A%2F%2Fearthquakes.bgs.ac.uk%2Ffeeds%2FMhSeismology.xml&api_key=0pn0dyaptnxh2gzs2yhdah1sjtmjuyqeplwovioa&count=999`
     )
       .then(response => response.json())
       .then(data => {
