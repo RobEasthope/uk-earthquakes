@@ -20,7 +20,7 @@ const App: React.FC = () => {
   return (
     <div>
       Data:
-      {!title ? 'Loading...' : `${title}`}
+      {!title ? 'Loading...' : ` ${title}`}
     </div>
   );
 };
