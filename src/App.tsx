@@ -2,23 +2,23 @@ import React from 'react';
 import Map from './Map';
 
 const App: React.FC = () => {
-  const [firstName, setFirstName] = React.useState(null);
-  const [lastName, setLastName] = React.useState(null);
+  const [rawData, setRawData] = React.useState(null);
 
   React.useEffect(() => {
-    fetch('https://randomuser.me/api/')
-      .then(results => results.json())
+    fetch('http://earthquakes.bgs.ac.uk/feeds/MhSeismology.xml')
+      .then(response => response.text())
+      .then(str => new window.DOMParser().parseFromString(str, 'text/xml'))
       .then(data => {
-        const { name } = data.results[0];
-        setFirstName(name.first);
-        setLastName(name.last);
+        // const { name } = data.results[0];
+        console.log(data);
+        setRawData(data);
       });
   }, []);
 
   return (
     <div>
-      Name:{' '}
-      {!firstName || !lastName ? 'Loading...' : `${firstName} ${lastName}`}
+      Data:
+      {/* {!firstName || !lastName ? 'Loading...' : `${firstName} ${lastName}`} */}
     </div>
   );
 };
