@@ -3,8 +3,8 @@ import Map from './Map';
 import { xml2json } from 'xml-js';
 
 const App: React.FC = () => {
-  const [title, setTitle] = React.useState(null);
-  const [items, setItems] = React.useState(null);
+  const [title, setTitle] = React.useState();
+  const [items, setItems] = React.useState();
 
   React.useEffect(() => {
     fetch(
@@ -21,6 +21,8 @@ const App: React.FC = () => {
     <div>
       Data:
       {!title ? 'Loading...' : ` ${title}`}
+      {items &&
+        items.map((quake: { title: string }) => <div>{quake.title}</div>)}
     </div>
   );
 };
