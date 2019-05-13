@@ -13,7 +13,7 @@ const App: React.FC = () => {
         setFirstName(name.first);
         setLastName(name.last);
       });
-  }, []); // <-- Have to pass in [] here!
+  }, []);
 
   return (
     <div>
