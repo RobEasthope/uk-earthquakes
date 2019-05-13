@@ -1,6 +1,5 @@
 import React from 'react';
-import Map from './Map';
-import { xml2json } from 'xml-js';
+// import Map from './Map';
 
 const App: React.FC = () => {
   const [title, setTitle] = React.useState();
