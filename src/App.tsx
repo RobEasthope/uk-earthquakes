@@ -3,23 +3,24 @@ import Map from './Map';
 import { xml2json } from 'xml-js';
 
 const App: React.FC = () => {
-  const [rawData, setRawData] = React.useState(null);
+  const [title, setTitle] = React.useState(null);
+  const [items, setItems] = React.useState(null);
 
   React.useEffect(() => {
-    fetch('http://earthquakes.bgs.ac.uk/feeds/MhSeismology.xml')
-      .then(response => response.text())
-      .then(str => xml2json(str))
+    fetch(
+      'https://api.rss2json.com/v1/api.json?rss_url=http%3A%2F%2Fearthquakes.bgs.ac.uk%2Ffeeds%2FMhSeismology.xml'
+    )
+      .then(response => response.json())
       .then(data => {
-        // const { name } = data.results[0];
-        console.log(data);
-        // setRawData(data);
+        setTitle(data.feed.title);
+        setItems(data.items);
       });
   }, []);
 
   return (
     <div>
       Data:
-      {/* {!firstName || !lastName ? 'Loading...' : `${firstName} ${lastName}`} */}
+      {!title ? 'Loading...' : `${title}`}
     </div>
   );
 };
