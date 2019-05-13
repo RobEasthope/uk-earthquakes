@@ -1,7 +1,7 @@
 import React from 'react';
 import Map from './Map';
 
-function User() {
+const App: React.FC = () => {
   const [firstName, setFirstName] = React.useState(null);
   const [lastName, setLastName] = React.useState(null);
 
@@ -20,15 +20,6 @@ function User() {
       Name:{' '}
       {!firstName || !lastName ? 'Loading...' : `${firstName} ${lastName}`}
     </div>
-  );
-}
-
-const App: React.FC = () => {
-  return (
-    <React.Fragment>
-      <User />
-      {/* <Map /> */}
-    </React.Fragment>
   );
 };
 
